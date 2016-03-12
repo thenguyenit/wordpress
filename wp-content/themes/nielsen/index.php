@@ -8,6 +8,18 @@
  * http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
+function pr($data = null, $die = true)
+{
+    $trace = debug_backtrace();
+    $caller = array_shift($trace);
+    echo '<pre>';
+    echo "called by [" . $caller['file'] . "] line: " . $caller['line'] . "\n";
+    var_dump($data);
+    echo '</pre>';
+    if ($die) {
+        exit;
+    }
+}
 /**
  * @package Yithems
  */
@@ -19,3 +31,4 @@ get_header(); ?>
     <?php do_action( 'yit_primary' ) ?>
 
 <?php get_footer(); ?>
+
